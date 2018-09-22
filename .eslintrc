@@ -15,6 +15,5 @@
   ],
   // To give you an idea how to override rule options:
   "rules": {
-    "quotes": [2, "single"]
   }
 }
