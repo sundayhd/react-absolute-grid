@@ -7,7 +7,8 @@
     "build": "webpack --config webpack/build.config.js --optimize-minimize",
     "build-demo": "webpack --config 'webpack/demo.config.js' --optimize-minimize --content-base demo",
     "dev": "webpack-dev-server --config 'webpack/dev.config.js' --devtool eval --progress --colors --hot --content-base demo",
-    "prepare": "npm run build"
+    "lint": "eslint lib",
+    "prepare": "npm run lint && npm run build"
   },
   "author": "Jonathan Rowny",
   "contributors": [
@@ -27,6 +28,8 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
+    "eslint": "^3.17.0",
+    "eslint-plugin-react": "^6.10.0",
     "lodash": "^4.17.1",
     "node-libs-browser": "^2.0.0",
     "prop-types": "^15.5.10",
