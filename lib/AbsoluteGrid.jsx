@@ -165,6 +165,12 @@ export default function createAbsoluteGrid(
       this.setContainer();
     }
 
+    shouldComponentUpdate = (nextProps, nextState) => {
+      if (this.compareObjects(nextProps, this.props)) return true;
+      if (this.compareObjects(nextState, this.state)) return true;
+      return false;
+    };
+
     componentWillUnmount() {
       window.removeEventListener("resize", this.onResize);
     }
@@ -201,5 +207,26 @@ export default function createAbsoluteGrid(
         this.setState({ layoutWidth: width });
       }
     };
+
+    compareObjects(obj1, obj2, checkLength = false) {
+      if ((obj1 != null && obj2 == null) || (obj1 == null && obj2 != null))
+        return true;
+      let keys = Object.keys(obj1);
+      if (checkLength) {
+        if (keys.length != Object.keys(obj2).length) return true;
+      }
+      for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
+        if (
+          obj1[key] !== null &&
+          typeof obj1[key] === "object" &&
+          obj2[key] !== null &&
+          typeof obj2[key] === "object"
+        ) {
+          if (this.compareObjects(obj1[key], obj2[key], true)) return true;
+        } else if (obj1[key] != obj2[key]) return true;
+      }
+      return false;
+    }
   };
 }
