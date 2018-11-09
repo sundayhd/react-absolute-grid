@@ -165,11 +165,11 @@ export default function createAbsoluteGrid(
       this.setContainer();
     }
 
-    shouldComponentUpdate = (nextProps, nextState) => {
-      if (this.compareObjects(nextProps, this.props)) return true;
-      if (this.compareObjects(nextState, this.state)) return true;
-      return false;
-    };
+    // shouldComponentUpdate = (nextProps, nextState) => {
+    //   if (this.compareObjects(nextProps, this.props)) return true;
+    //   if (this.compareObjects(nextState, this.state)) return true;
+    //   return false;
+    // };
 
     componentWillUnmount() {
       window.removeEventListener("resize", this.onResize);
