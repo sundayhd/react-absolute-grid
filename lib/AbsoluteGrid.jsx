@@ -36,7 +36,6 @@ export default function createAbsoluteGrid(
       rtl: false,
       minSort: 0,
       maxSort: 9999,
-      forceUpdate: false,
       onMove: () => {},
       onDragStart: () => {},
       onDragMove: () => {},
@@ -61,8 +60,7 @@ export default function createAbsoluteGrid(
       onDragEnd: PropTypes.func,
       rtl: PropTypes.bool,
       minSort: PropTypes.number,
-      maxSort: PropTypes.number,
-      forceUpdate: PropTypes.bool
+      maxSort: PropTypes.number
     };
 
     constructor(props, context) {
@@ -154,7 +152,6 @@ export default function createAbsoluteGrid(
           ref={node => (this.container = node)}
         >
           {gridItems}
-          <div style={{ display: "none" }}>{this.props.forceUpdate}</div>
         </div>
       );
     }
