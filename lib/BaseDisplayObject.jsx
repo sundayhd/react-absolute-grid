@@ -21,7 +21,8 @@ export default function createDisplayObject(
       dragManager: PropTypes.object,
       itemsLength: PropTypes.number,
       container: PropTypes.object,
-      rtl: PropTypes.bool
+      rtl: PropTypes.bool,
+      containerZoom: PropTypes.number
     };
 
     constructor(props) {
@@ -63,7 +64,8 @@ export default function createDisplayObject(
           e,
           this.domNode,
           this.props.item,
-          this.updateDrag.bind(this)
+          this.updateDrag.bind(this),
+          this.props.containerZoom
         );
       }
     };

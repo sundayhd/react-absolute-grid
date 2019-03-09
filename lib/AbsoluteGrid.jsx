@@ -48,6 +48,7 @@ export default function createAbsoluteGrid(
       itemHeight: PropTypes.number,
       verticalMargin: PropTypes.number,
       zoom: PropTypes.number,
+      containerZoom: PropTypes.number,
       responsive: PropTypes.bool,
       dragEnabled: PropTypes.bool,
       keyProp: PropTypes.string,
@@ -122,6 +123,7 @@ export default function createAbsoluteGrid(
             layoutWidth={this.state.layoutWidth}
             verticalMargin={this.props.verticalMargin}
             zoom={this.props.zoom}
+            containerZoom={this.props.containerZoom}
             keyProp={this.props.keyProp}
             filterProp={this.props.filterProp}
             dragEnabled={this.props.dragEnabled}
