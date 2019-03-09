@@ -61,7 +61,8 @@ export default function createAbsoluteGrid(
       onDragEnd: PropTypes.func,
       rtl: PropTypes.bool,
       minSort: PropTypes.number,
-      maxSort: PropTypes.number
+      maxSort: PropTypes.number,
+      itemsPerPage: PropTypes.number
     };
 
     constructor(props, context) {
@@ -165,6 +166,10 @@ export default function createAbsoluteGrid(
       }
       this.onResize();
       this.setContainer();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+      if (prevProps.itemsPerPage != this.props.itemsPerPage) this.onResize();
     }
 
     // shouldComponentUpdate = (nextProps, nextState) => {
