@@ -62,7 +62,8 @@ export default function createAbsoluteGrid(
       rtl: PropTypes.bool,
       minSort: PropTypes.number,
       maxSort: PropTypes.number,
-      itemsPerRow: PropTypes.number
+      forceResize: PropTypes.bool,
+      forceResizeDone: PropTypes.func
     };
 
     constructor(props, context) {
@@ -169,7 +170,13 @@ export default function createAbsoluteGrid(
     }
 
     componentDidUpdate(prevProps, prevState) {
-      if (prevProps.itemsPerRow != this.props.itemsPerRow) this.onResize();
+      if (
+        prevProps.forceResize != this.props.forceResize &&
+        this.props.forceResize == true
+      ) {
+        this.onResize();
+        if (this.props.forceResizeDone) this.props.forceResizeDone();
+      }
     }
 
     // shouldComponentUpdate = (nextProps, nextState) => {
