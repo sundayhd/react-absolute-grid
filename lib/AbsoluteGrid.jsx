@@ -175,7 +175,6 @@ export default function createAbsoluteGrid(
         this.props.forceResize == true
       ) {
         this.onResize();
-        if (this.props.forceResizeDone) this.props.forceResizeDone();
       }
     }
 
@@ -218,7 +217,9 @@ export default function createAbsoluteGrid(
     getDOMWidth = () => {
       const width = this.container && this.container.clientWidth;
       if (this.state.layoutWidth !== width) {
-        this.setState({ layoutWidth: width });
+        this.setState({ layoutWidth: width }, () => {
+          if (this.props.forceResizeDone) this.props.forceResizeDone();
+        });
       }
     };
 
